@@ -1,15 +1,15 @@
-import { Sheet } from "./Sheet";
-import {GoogleSpreadsheetClient} from "../clients/GoogleSpreadsheetClient";
+import { Worksheet } from "./Worksheet";
+import { GoogleSpreadsheetClient } from "../clients/GoogleSpreadsheetClient";
 
 export class Spreadsheet {
 
-  static async open(client) {
+  static async open(client: GoogleSpreadsheetClient) {
     const spreadsheet = new Spreadsheet(client);
     await spreadsheet.load();
     return spreadsheet;
   }
 
-  sheets: Sheet[] = [];
+  worksheets: Worksheet[] = [];
 
   constructor(
     private readonly client: GoogleSpreadsheetClient
@@ -22,9 +22,9 @@ export class Spreadsheet {
       fields: 'sheets(properties(title))',
     });
 
-    this.sheets = sheets.map(async (sheet) => {
+    this.worksheets = sheets.map(async (sheet) => {
       const title = sheet.properties['title'];
-      return await Sheet.open(`'${title}'`, {
+      return await Worksheet.open(`'${title}'`, {
         client: this.client,
       })
     });

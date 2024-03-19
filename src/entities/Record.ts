@@ -1,16 +1,13 @@
 import { columnToLetter } from "../functions/columnToLetter";
-import {Sheet} from "./Sheet";
-import {GoogleSpreadsheetClient} from "../clients/GoogleSpreadsheetClient";
+import { Worksheet } from "./Worksheet";
 
-export class Value {
-  private readonly client: GoogleSpreadsheetClient;
-  private readonly sheet: Sheet;
+export class Record {
+  private readonly worksheet: Worksheet;
   private index: number = -1;
   private value: any = {};
 
-  constructor({ client, sheet, index, value }) {
-    this.client = client;
-    this.sheet = sheet;
+  constructor({ worksheet, index, value }) {
+    this.worksheet = worksheet;
     this.index = index;
     this.value = value;
 
@@ -33,13 +30,13 @@ export class Value {
   }
 
   get a1Range() {
-    return this.sheet.title
+    return this.worksheet.title
         + `!A${this.index}`
-        + ':' + columnToLetter(this.sheet.columns.length) + this.index;
+        + ':' + columnToLetter(this.worksheet.columns.length) + this.index;
   }
 
   async update() {
-    await this.client.valuesUpdate({
+    await this.worksheet.client.valuesUpdate({
       range: this.a1Range,
       values: [
         this.toArray()
@@ -50,7 +47,7 @@ export class Value {
   }
 
   toArray() {
-    return this.sheet.columns.map((column) => {
+    return this.worksheet.columns.map((column) => {
       return this.value[column];
     });
   }
