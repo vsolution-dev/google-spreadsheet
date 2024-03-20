@@ -7,10 +7,10 @@ export const createJWT = ({ email, key }) => {
   );
 }
 
-export class GoogleSpreadsheetClient {
+export class GoogleSheetsAPI {
 
   static create({ spreadsheetId, email, key }) {
-    return new GoogleSpreadsheetClient({
+    return new GoogleSheetsAPI({
       spreadsheetId,
       auth: createJWT({
         email,

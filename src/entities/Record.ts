@@ -6,7 +6,7 @@ export class Record {
   private index: number = -1;
   private value: any = {};
 
-  constructor({ worksheet, index, value }) {
+  private constructor({ worksheet, index, value }) {
     this.worksheet = worksheet;
     this.index = index;
     this.value = value;

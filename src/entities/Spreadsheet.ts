@@ -1,9 +1,9 @@
 import { Worksheet } from "./Worksheet";
-import { GoogleSpreadsheetClient } from "../clients/GoogleSpreadsheetClient";
+import { GoogleSheetsAPI } from "../clients/GoogleSheetsAPI";
 
 export class Spreadsheet {
 
-  static async open(client: GoogleSpreadsheetClient) {
+  static async open(client: GoogleSheetsAPI) {
     const spreadsheet = new Spreadsheet(client);
     await spreadsheet.load();
     return spreadsheet;
@@ -11,8 +11,8 @@ export class Spreadsheet {
 
   worksheets: Worksheet[] = [];
 
-  constructor(
-    private readonly client: GoogleSpreadsheetClient
+  private constructor(
+    private readonly client: GoogleSheetsAPI
   ) {
     this.client = client;
   }

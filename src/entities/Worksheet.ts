@@ -1,9 +1,9 @@
 import { Record } from "./Record";
-import { GoogleSpreadsheetClient } from "../clients/GoogleSpreadsheetClient";
+import { GoogleSheetsAPI } from "../clients/GoogleSheetsAPI";
 
 export class Worksheet {
   readonly title: string;
-  readonly client: GoogleSpreadsheetClient;
+  readonly client: GoogleSheetsAPI;
   records: Record[] = [];
   columns: any[] = [];
 
@@ -13,7 +13,7 @@ export class Worksheet {
     return worksheet;
   }
 
-  constructor(title: string, { client }) {
+  private constructor(title: string, { client }) {
     this.title = title;
     this.client = client;
   }
