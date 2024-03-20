@@ -12,16 +12,13 @@ export class GoogleSheetsAPI {
   static create({ spreadsheetId, email, key }) {
     return new GoogleSheetsAPI({
       spreadsheetId,
-      auth: createJWT({
-        email,
-        key
-      }),
+      auth: createJWT({ email, key }),
     });
   }
 
-  spreadsheetId: string;
-  auth: any;
-  sheets: any;
+  private readonly spreadsheetId: string;
+  private readonly auth: any;
+  private readonly sheets: any;
 
   constructor({ spreadsheetId, auth }) {
     this.auth = auth;

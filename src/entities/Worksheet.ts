@@ -14,7 +14,7 @@ export class Worksheet {
   }
 
   private constructor(title: string, { client }) {
-    this.title = title;
+    this.title = "'" + title + "'";
     this.client = client;
   }
 

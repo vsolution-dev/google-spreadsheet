@@ -24,7 +24,7 @@ export class Spreadsheet {
 
     this.worksheets = sheets.map(async (sheet) => {
       const title = sheet.properties['title'];
-      return await Worksheet.open(`'${title}'`, {
+      return await Worksheet.open(title, {
         client: this.client,
       })
     });

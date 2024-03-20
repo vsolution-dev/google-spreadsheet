@@ -3,15 +3,15 @@ import { Worksheet } from "./Worksheet";
 
 export class Record {
   private readonly worksheet: Worksheet;
-  private index: number = -1;
-  private value: any = {};
+  private readonly index: number;
+  private readonly value: any;
 
-  private constructor({ worksheet, index, value }) {
+  constructor({ worksheet, index, value }) {
     this.worksheet = worksheet;
     this.index = index;
     this.value = value;
 
-    for(const column in this.value) {
+    for (const column in this.value) {
       Object.defineProperty(this, column, {
         get: () => this.get(column),
         set: (value) => this.set(column, value),
@@ -19,11 +19,11 @@ export class Record {
     }
   }
 
-  get(column) {
+  get(column: string) {
     return this.value[column];
   }
 
-  set(column, value) {
+  set(column: string, value: any) {
     if (this.value[column] !== value) {
       this.value[column] = value;
     }

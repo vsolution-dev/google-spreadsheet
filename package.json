@@ -4,9 +4,10 @@
   "description": "",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
+  "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "build": "rollup --config",
+    "dev": "rollup --config --watch"
   },
   "files": [
     "dist",
