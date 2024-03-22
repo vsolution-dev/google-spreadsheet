@@ -22,7 +22,7 @@
     "tslib": "^2.6.2",
     "typescript": "^5.4.2"
   },
-  "dependencies": {
+  "peerDependencies": {
     "googleapis": "^134.0.0"
   }
 }
