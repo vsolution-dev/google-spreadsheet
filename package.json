@@ -6,8 +6,9 @@
   "module": "dist/bundle.esm.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "rollup --config",
-    "dev": "rollup --config --watch"
+    "build": "rm -rf ./dist && rollup --config",
+    "dev": "rollup --config --watch",
+    "publish": "npm run build && npm publish --access=public"
   },
   "files": [
     "dist",
@@ -22,7 +23,7 @@
     "tslib": "^2.6.2",
     "typescript": "^5.4.2"
   },
-  "peerDependencies": {
+  "dependencies": {
     "googleapis": "^134.0.0"
   }
 }
